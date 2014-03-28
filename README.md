@@ -21,6 +21,8 @@ Run [IPython](http://ipython.org) inside [Docker](http://www.docker.io)
 3. Start IPython Notebook using ```supervisord&```
 4. Point your brower to ```http://<your host name>:49888```
 
+To run in background execute ```./run```
+
 #### Removing or changing password authentication
 In order to remove password authentication, modify the configuration in this [file](http://github.com/lluiscanet/docker-ipython/blob/master/profile_nbserver/ipython_notebook_config.py)
 by commenting out the line
