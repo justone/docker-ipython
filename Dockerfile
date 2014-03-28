@@ -90,3 +90,4 @@ EXPOSE 22 8888
 
 #Cleanup
 RUN rm -rf /tmp/*
+RUN mkdir /data
