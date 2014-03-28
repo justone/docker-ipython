@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:12.04 
  
 RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt/sources.list && \
     echo 'deb http://archive.ubuntu.com/ubuntu precise-updates universe' >> /etc/apt/sources.list && \
@@ -82,6 +82,9 @@ RUN pip install rpy2
 
 #Vincent
 RUN pip install vincent
+
+#Scikit-learn
+RUN pip install -U scikit-learn
 
 ADD supervisord-ssh.conf /etc/supervisor/conf.d/
 ADD supervisord-ipython.conf /etc/supervisor/conf.d/
