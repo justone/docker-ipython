@@ -1,1 +1,1 @@
-docker run -d -v `pwd`:/ipython -v /data:/data -p 49888:8888 ipython supervisord 
+docker run -d -v `pwd`:/ipython -v /data:/data -p 49888:8888 -p 23:22 ipython supervisord 
