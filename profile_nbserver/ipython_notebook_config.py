@@ -62,7 +62,7 @@ c.NotebookApp.open_browser = False
 #   from IPython.lib import passwd; passwd()
 # 
 # The string should be of the form type:salt:hashed-password.
-c.NotebookApp.password = u'sha1:01dc1e3ecfb8:cc539c4fcc2ef3d751e4a20d918f761fd6704798'
+c.NotebookApp.password = u'sha1:1aee9157c922:f6c6e514d8f5811e3f50bc9f5b3ac3f8a43a7c2a'
 
 # The name of the IPython directory. This directory is used for logging
 # configuration (through profiles), history storage, etc. The default is usually
