@@ -32,10 +32,13 @@ by commenting out the line
 To change the password
 
 1. Get your hashed password by executing in your python client the following: 
-``In [1]: from IPython.lib import passwd``
-``In [2]: passwd()``
-``Enter password:``
-``Verify password:``
+
+```
+In [1]: from IPython.lib import passwd
+In [2]: passwd()
+Enter password:
+Verify password:
+```
 
 2. Replace the line in config [file](http://github.com/lluiscanet/docker-ipython/blob/master/profile_nbserver/ipython_notebook_config.py) with 
 ```c.NotebookApp.password = u'sha1:yourhashedpassword'``` 
