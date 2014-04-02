@@ -20,7 +20,7 @@ Run [IPython](http://ipython.org) inside [Docker](http://www.docker.io)
 1. Build Docker image using the using ```build```.  This can take a long time, ~30mins.  Luckily this step only has to done once(or whenever you change the Dockerfile).
 2. Create and shell into new Docker container using ```shell``
 3. Start IPython Notebook using ```supervisord&```
-4. Point your brower to ```http://<your host name>:49888```
+4. Point your brower to ```http://<your host name>:49888```, default login password is 'password'
 
 To run in background execute ```./start```
 
