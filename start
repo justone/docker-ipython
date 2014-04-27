@@ -1,1 +1,8 @@
-docker run -d -v `pwd`:/ipython -v /data:/data -p 49888:8888 -p 23:22 ipython supervisord 
+#!/bin/bash
+if [ -d "$1" ] ; then
+    HOST_FOLDER=$1
+else
+    HOST_FOLDER="`pwd`/notebooks";
+fi
+
+docker run -d -v $HOST_FOLDER:/home/ipy/ipynotebooks:rw -p 8888:8888 -p 23:22 -p 9001:9001 ipython 

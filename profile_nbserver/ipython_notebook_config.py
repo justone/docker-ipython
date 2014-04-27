@@ -62,7 +62,7 @@ c.NotebookApp.open_browser = False
 #   from IPython.lib import passwd; passwd()
 # 
 # The string should be of the form type:salt:hashed-password.
-c.NotebookApp.password = u'sha1:1aee9157c922:f6c6e514d8f5811e3f50bc9f5b3ac3f8a43a7c2a'
+#c.NotebookApp.password = u'sha1:1aee9157c922:f6c6e514d8f5811e3f50bc9f5b3ac3f8a43a7c2a'
 
 # The name of the IPython directory. This directory is used for logging
 # configuration (through profiles), history storage, etc. The default is usually
@@ -71,7 +71,7 @@ c.NotebookApp.password = u'sha1:1aee9157c922:f6c6e514d8f5811e3f50bc9f5b3ac3f8a43
 # c.NotebookApp.ipython_dir = u'/ipython'
 
 # The port the notebook server will listen on.
-# c.NotebookApp.port = 8888
+c.NotebookApp.port = 8888
 
 # Whether to overwrite existing config files when copying
 # c.NotebookApp.overwrite = False
@@ -402,4 +402,4 @@ c.IPKernelApp.pylab = 'inline'
 # c.NotebookManager.save_script = False
 
 # The directory to use for notebooks.
-c.NotebookManager.notebook_dir = '/ipython/notebooks'
+c.NotebookManager.notebook_dir = '/home/ipy/ipynotebooks'
