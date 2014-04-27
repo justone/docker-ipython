@@ -12,7 +12,6 @@ RUN apt-get update
 
 #Supervisord
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && mkdir -p /var/log/supervisor
-CMD ["/usr/bin/supervisord", "-n"]
 
 #SSHD
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /var/run/sshd && \

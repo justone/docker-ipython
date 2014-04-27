@@ -17,12 +17,15 @@ Run [IPython](http://ipython.org) inside [Docker](http://www.docker.io)
 * [Scikit-learn](http://scikit-learn.org/stable/)
 
 ####Instructions
-1. Build Docker image using the using ```build```.  This can take a long time, ~30mins.  Luckily this step only has to done once(or whenever you change the Dockerfile).
-2. Create and shell into new Docker container using ```shell``
-3. Start IPython Notebook using ```supervisord&```
-4. Point your brower to ```http://<your host name>:49888```, default login password is 'password'
+1. Build Docker image using the using ```build``` script.  This can take a long time, ~30mins.  Luckily this step only has to done once(or whenever you change the Dockerfile).
+2. Create and shell into new Docker container using ```shell``` script
+3. Start IPython Notebook in the container using ```supervisord&```
+4. Point your brower to ```http://<your host name>:8888```, default login password is 'password'
 
-To run in background execute ```./start```
+To run in background execute ```./start [host_path]``` and host_path will be mounted as the notebook folder of ipython
+
+#### Background mode
+In background or using supervisord the user ipy is used to run the ipython notebook. The /home/ipy/.python contains the configuration options that were copied from the profile_nbserver.
 
 #### Removing or changing password authentication
 In order to remove password authentication, modify the configuration in this [file](http://github.com/lluiscanet/docker-ipython/blob/master/profile_nbserver/ipython_notebook_config.py)
@@ -61,7 +64,7 @@ distribute==0.7.3
 html5lib==0.99
 ipython==1.1.0
 llvmmath==0.1.1
-llvmpy==unknown
+llvmpy==0.11.2 # latest version pops a missing versioneer module 
 lxml==2.3.2
 matplotlib==1.3.1
 medusa==0.5.4
