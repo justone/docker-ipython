@@ -93,7 +93,8 @@ RUN pip install vincent
 RUN pip install -U scikit-learn
 
 #Cleanup
-RUN rm -rf /tmp/*
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #user ipy
 RUN useradd -D --shell=/bin/bash
@@ -104,12 +105,14 @@ RUN sudo -u ipy mkdir -p /home/ipy/bin /home/ipy/.matplotlib /home/ipy/.ipython 
 
 ENV IPYTHONDIR /home/ipy/.ipython
 ENV IPYTHON_PROFILE nbserver
-RUN /usr/local/bin/ipython profile create nbserver
+# create nbserver profile using ipy user to avoid strange error not allowing accessing the profile security and pid folder.
+# the $IPYTHONDIR echo fix the sudo for ipy to use that env variable
+RUN sudo -u ipy echo $IPYTHONDIR && /usr/local/bin/ipython profile create nbserver
 
 # Adding script necessary to start ipython notebook server.
 #ADD ./notebooks /home/ipy/ipynotebooks
 ADD ./profile_nbserver /home/ipy/.ipython/profile_nbserver
-RUN chown ipy:ipy /home/ipy -R && chmod 755  /var/run/sshd/
+RUN chmod 755  /var/run/sshd/
 
 ADD ./conf /etc/supervisor/conf.d
 

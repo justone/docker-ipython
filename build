@@ -1,1 +1,1 @@
-docker build -t ipython .
+docker build --rm=true -t ipython . 

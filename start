@@ -5,4 +5,4 @@ else
     HOST_FOLDER="`pwd`/notebooks";
 fi
 
-docker run -d -v $HOST_FOLDER:/home/ipy/ipynotebooks:rw -p 8888:8888 -p 23:22 -p 9001:9001 ipython 
+docker run -d -v $HOST_FOLDER:/home/ipy/ipynotebooks:rw -p 8888:8888 -p 23:22 -p 9001:9001 ipython /usr/bin/supervisord 
