@@ -97,22 +97,21 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #user ipy
-RUN useradd -D --shell=/bin/bash
-RUN useradd -m ipy
+RUN useradd -m ipy -s /bin/bash
 RUN echo "ipy:ipython" | chpasswd
 RUN adduser ipy sudo
 RUN sudo -u ipy mkdir -p /home/ipy/bin /home/ipy/.matplotlib /home/ipy/.ipython /home/ipy/ipynotebooks /home/ipy/.ssh
 
 ENV IPYTHONDIR /home/ipy/.ipython
 ENV IPYTHON_PROFILE nbserver
-# create nbserver profile using ipy user to avoid strange error not allowing accessing the profile security and pid folder.
-# the $IPYTHONDIR echo fix the sudo for ipy to use that env variable
-RUN sudo -u ipy echo $IPYTHONDIR && /usr/local/bin/ipython profile create nbserver
+RUN /usr/local/bin/ipython profile create nbserver
 
 # Adding script necessary to start ipython notebook server.
 #ADD ./notebooks /home/ipy/ipynotebooks
-ADD ./profile_nbserver /home/ipy/.ipython/profile_nbserver
-RUN chmod 755  /var/run/sshd/
+ADD ./profile_nbserver/ipython_notebook_config.py /home/ipy/.ipython/profile_nbserver/ipython_notebook_config.py
+RUN chown ipy:ipy /home/ipy/ -R && chmod 755  /var/run/sshd/
+# fix security bug permissions
+RUN cd /home/ipy/.ipython/profile_nbserver/ && mv pid pid_ && mv pid_ pid && mv security security_ && mv security_ security 
 
 ADD ./conf /etc/supervisor/conf.d
 
