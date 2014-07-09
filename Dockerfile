@@ -109,8 +109,11 @@ ENV IPYTHONDIR /home/ipy/.ipython
 ENV IPYTHON_PROFILE nbserver
 RUN /usr/local/bin/ipython profile create nbserver
 
+# Downlaod world cup notebooks
+ADD ./notebooks /home/ipy/ipynotebooks
+RUN git clone https://github.com/toquegoog/io.git /home/ipy/ipynotebooks/worldcup
+
 # Adding script necessary to start ipython notebook server.
-#ADD ./notebooks /home/ipy/ipynotebooks
 ADD ./profile_nbserver/ipython_notebook_config.py /home/ipy/.ipython/profile_nbserver/ipython_notebook_config.py
 RUN chown ipy:ipy /home/ipy/ -R && chmod 755  /var/run/sshd/
 # fix security bug permissions
