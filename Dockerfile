@@ -92,6 +92,9 @@ RUN pip install vincent
 #Scikit-learn
 RUN pip install -U scikit-learn
 
+#Google BigQuery
+RUN pip install bigquery
+
 #Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
