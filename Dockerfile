@@ -120,6 +120,9 @@ RUN chown ipy:ipy /home/ipy/ -R && chmod 755  /var/run/sshd/
 # fix security bug permissions
 RUN cd /home/ipy/.ipython/profile_nbserver/ && mv pid pid_ && mv pid_ pid && mv security security_ && mv security_ security 
 
+# install Humor Sans so matplotlib's xkcd mode works
+RUN cd /usr/share/fonts/truetype && wget http://antiyawn.com/uploads/Humor-Sans-1.0.ttf
+
 ADD ./conf /etc/supervisor/conf.d
 
 EXPOSE 22 8888 9001
